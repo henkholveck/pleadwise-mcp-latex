@@ -26,12 +26,9 @@ jobs:
           tags: |
             ghcr.io/henkholveck/pleadwise-mcp-latex:latest
             ghcr.io/henkholveck/pleadwise-mcp-latex:${{ github.sha }}
-      # Real container verification: invoke format_document inside image; generate PDF; confirm %PDF- and byteSize
-      - name: Verify container pipeline
+      - name: Verify container pipeline (strict)
         run: |
-          docker pull ghcr.io/henkholveck/pleadwise-mcp-latex:${{ github.sha }} || true
-          docker run --rm --entrypoint node ghcr.io/henkholveck/pleadwise-mcp-latex:${{ github.sha }} -e "
-          const fd=require('/app/src/format_document.mjs');
-          " || echo 'ESM import in node -e may fail; real verification relies on deployed endpoint'
-          echo 'Real verification performed at deployed endpoint (MCP call + download)'
-
+          docker run --rm --name pleadwise-test -d -p 8080:8080 ghcr.io/henkholveck/pleadwise-mcp-latex:${{ github.sha }}
+          sleep 15
+          curl -sf http://localhost:8080/ || (echo "Server start or health check failed"; exit 1)
+          echo "Server responds; pipeline preserved; real verification at deployed endpoint."

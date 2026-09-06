@@ -11,6 +11,14 @@ WORKDIR /app
 COPY package.json .
 RUN npm install --omit=dev 2>/dev/null || echo "npm install skipped (no package-lock in this image)"
 COPY build/ ./build/
+COPY dist/ ./dist/
+COPY src/http_entry.mjs ./src/
+COPY download_route.js ./
+COPY new_format.js ./
+COPY camotionblue.cls ./
+COPY bluebook.sty ./
+COPY multind.sty ./
+COPY pstricks.sty ./
 COPY latex.js ./
 COPY src/format_document.mjs ./src/
 COPY fly-app/ ./fly-app/
@@ -19,4 +27,4 @@ ENV PORT=8080
 # Container-safe paths: use /app/ (not ~/ or /Users/henkster)
 # Server binds 0.0.0.0 to match Fly [http_service] internal_port
 EXPOSE 8080
-ENTRYPOINT ["node", "src/http_entry.mjs"]'MCP server stub: bind 0.0.0.0:' + (process.env.PORT||8080) + '; real server requires full pleadwise-mcp source + dist patches preserved.')"]
+ENTRYPOINT ["node", "src/http_entry.mjs"]
