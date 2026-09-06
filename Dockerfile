@@ -19,4 +19,4 @@ ENV PORT=8080
 # Container-safe paths: use /app/ (not ~/ or /Users/henkster)
 # Server binds 0.0.0.0 to match Fly [http_service] internal_port
 EXPOSE 8080
-ENTRYPOINT ["node", "-e", "console.log('MCP server stub: bind 0.0.0.0:' + (process.env.PORT||8080) + '; real server requires full pleadwise-mcp source + dist patches preserved.')"]
+ENTRYPOINT ["node", "src/http_entry.mjs"]'MCP server stub: bind 0.0.0.0:' + (process.env.PORT||8080) + '; real server requires full pleadwise-mcp source + dist patches preserved.')"]
