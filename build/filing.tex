@@ -1,0 +1,130 @@
+\documentclass[letter]{camotionblue}
+\usepackage[english]{babel}
+\geometry{letterpaper}
+\usepackage{pstricks}
+\usepackage[T1]{fontenc}
+\usepackage[normalem]{ulem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{tgtermes}
+\usepackage{mathptmx}
+\usepackage{enumitem}
+\usepackage{eso-pic}
+\usepackage{calc}
+\usepackage{xspace}
+\usepackage{fmtcount}
+\usepackage{ragged2e}
+\usepackage{changepage}
+\usepackage{float}
+\usepackage{ifthen}
+\usepackage{xstring}
+\usepackage{graphicx}
+\setlength{\footskip}{15pt}
+\renewcommand{\normalsize}{\fontsize{12}{12}\selectfont}
+\doublespacing
+\setlength{\parskip}{0mm}
+\newcommand{\tab}{\hspace*{8.5mm}}
+\addmarginlineandnumbers
+\setupcaformating
+
+\renewcommand\firstpartytitle{Plaintiff\xspace}
+\newcommand\firstpartycaption{DANA WHITFIELD}
+\renewcommand\secondpartytitle{Defendant\xspace}
+\newcommand\secondpartycaption{RIDGELINE PROPERTY MANAGEMENT LLC}
+\newcommand\motiontitle{MOTION TO COMPEL DISCOVERY RESPONSES\xspace}
+\newcommand\casenumber{26-2-00001-1\xspace}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+
+\startcourtname
+\begin{tightcenter}
+\textbf{SUPERIOR COURT OF THE STATE OF CALIFORNIA\\
+  FOR THE COUNTY OF LOS ANGELES}
+\end{tightcenter}
+\vspace{4pt}
+
+\noindent
+\begin{figure}[H]
+\begin{tabular}{p{\dimexpr.5\linewidth-2\tabcolsep}@{\hspace{5pt}}|@{\hspace{0pt}}p{\dimexpr.5\linewidth-2\tabcolsep}}
+\begin{minipage}[t]{\dimexpr.5\linewidth-2\tabcolsep\relax}
+  \singlespacing\raggedright
+  \firstpartycaption,\newline
+  \tab\tab\tab\firstpartytitle,\newline
+  \tab\tab v.\newline
+  \secondpartycaption\newline
+  \tab\tab\tab\secondpartytitle.
+\end{minipage}
+&
+\hspace{1em}
+\begin{minipage}[t]{\dimexpr.5\linewidth-3\tabcolsep-1em\relax}
+  \singlespacing\raggedright
+  Case No.: \casenumber
+  \newline\newline
+  \textbf{\MakeUppercase\motiontitle}
+\end{minipage}\\
+\cline{1-1}
+\end{tabular}
+\end{figure}
+
+\setcounter{page}{1}
+\justifying
+\setlength{\parindent}{2em}
+
+\begin{center}
+\large\textbf{\uline{MOTION TO COMPEL DISCOVERY RESPONSES}}
+\end{center}
+
+\section{INTRODUCTION}
+
+Plaintiff moves this Court for an order compelling Defendant to produce documents responsive to Plaintiff's First Requests for Production, served on March 4, 2026. Costs of 50\% \& more are sought under Rule 37(a)(5).
+
+\section{STATEMENT OF FACTS}
+
+Plaintiff served her First Requests for Production on March 4, 2026. Defendant's responses were due April 3, 2026. Defendant served no response and requested no extension.
+
+\section{ARGUMENT}
+
+A party may move for an order compelling production when a party fails to produce documents requested under Rule 34. Defendant's failure to serve any response waived its objections.
+
+\section{CONCLUSION}
+
+Plaintiff requests an order compelling production within fourteen days.
+
+\vspace{1em}
+\noindent DATED: \today
+
+\vspace{2em}
+\begin{singlespace}
+\noindent
+\IfFileExists{signature.png}{%
+  \includegraphics[width=2.5in]{signature.png}\\[0.25em]%
+}{%
+  \vspace{2em}\\%
+}
+\\
+\end{singlespace}
+
+\newpage
+\section*{CERTIFICATE OF SERVICE}
+
+\begin{singlespace}
+I certify that on September 5, 2026 I served a copy of the foregoing on counsel of record by electronic mail.
+
+\vspace{2em}
+\noindent
+\IfFileExists{signature.png}{%
+  \includegraphics[width=2.5in]{signature.png}\\[0.25em]%
+}{%
+  \vspace{2em}\\%
+}
+Dana Whitfield\\
+\end{singlespace}
+
+\end{document}

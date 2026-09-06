@@ -1,0 +1,9 @@
+build/*.pdf
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+.env
+.env.*
+.DS_Store

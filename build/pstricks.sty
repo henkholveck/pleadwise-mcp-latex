@@ -1,0 +1,7 @@
+\ProvidesPackage{pstricks}[2024/01/01 Minimal pstricks stub for camotionblue]
+% Stub: defines only \rput for use with eso-pic \AtPageUpperLeft
+% Since \AtPageUpperLeft already handles page positioning,
+% \rput[tl](0,0){content} simply outputs {content} directly.
+\def\rput{\@ifnextchar[{\pst@rput@wopt}{\pst@rput@noopt}}
+\def\pst@rput@wopt[#1](#2,#3)#4{#4}
+\def\pst@rput@noopt(#1,#2)#3{#3}

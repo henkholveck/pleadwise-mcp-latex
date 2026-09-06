@@ -1,0 +1,113 @@
+\documentclass[letter]{camotionblue}
+\usepackage[english]{babel}
+\geometry{letterpaper}
+\usepackage{pstricks}
+\usepackage[T1]{fontenc}
+\usepackage[normalem]{ulem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{tgtermes}
+\usepackage{mathptmx}
+\usepackage{enumitem}
+\usepackage{eso-pic}
+\usepackage{calc}
+\usepackage{xspace}
+\usepackage{fmtcount}
+\usepackage{ragged2e}
+\usepackage{changepage}
+\usepackage{float}
+\usepackage{ifthen}
+\usepackage{xstring}
+\usepackage{graphicx}
+\setlength{\footskip}{15pt}
+\renewcommand{\normalsize}{\fontsize{12}{12}\selectfont}
+\doublespacing
+\setlength{\parskip}{0mm}
+\newcommand{\tab}{\hspace*{8.5mm}}
+\addmarginlineandnumbers
+\setupcaformating
+
+\renewcommand\firstpartytitle{Plaintiff\xspace}
+\newcommand\firstpartycaption{PLAINTIFF}
+\renewcommand\secondpartytitle{Defendant\xspace}
+\newcommand\secondpartycaption{DEFENDANT}
+\newcommand\motiontitle{Motion to Compel Discovery Responses\xspace}
+\newcommand\casenumber{[CASE NUMBER]\xspace}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+
+\startcourtname
+\begin{tightcenter}
+\textbf{COURT: CA-SUPERIOR}
+\end{tightcenter}
+\vspace{4pt}
+
+\noindent
+\begin{figure}[H]
+\begin{tabular}{p{\dimexpr.5\linewidth-2\tabcolsep}@{\hspace{5pt}}|@{\hspace{0pt}}p{\dimexpr.5\linewidth-2\tabcolsep}}
+\begin{minipage}[t]{\dimexpr.5\linewidth-2\tabcolsep\relax}
+  \singlespacing\raggedright
+  \firstpartycaption,\newline
+  \tab\tab\tab\firstpartytitle,\newline
+  \tab\tab v.\newline
+  \secondpartycaption\newline
+  \tab\tab\tab\secondpartytitle.
+\end{minipage}
+&
+\hspace{1em}
+\begin{minipage}[t]{\dimexpr.5\linewidth-3\tabcolsep-1em\relax}
+  \singlespacing\raggedright
+  Case No.: \casenumber
+  \newline\newline
+  \textbf{\MakeUppercase\motiontitle}
+\end{minipage}\\
+\cline{1-1}
+\end{tabular}
+\end{figure}
+
+\setcounter{page}{1}
+\justifying
+\setlength{\parindent}{2em}
+
+\begin{center}
+\large\textbf{\uline{MOTION TO COMPEL DISCOVERY RESPONSES}}
+\end{center}
+
+
+
+\vspace{1em}
+\noindent DATED: \today
+
+\vspace{2em}
+\begin{singlespace}
+\noindent
+\IfFileExists{signature.png}{%
+  \includegraphics[width=2.5in]{signature.png}\\[0.25em]%
+}{%
+  \vspace{2em}\\%
+}
+SUPERIOR COURT OF THE STATE OF CALIFORNIA\\
+  FOR THE COUNTY OF LOS ANGELES\\
+  Dana Whitfield, Plaintiff v. Ridgeline Property Management LLC, Defendant\\
+  Case No. 26-2-00001-1\\
+  MOTION TO COMPEL DISCOVERY RESPONSES\\
+  INTRODUCTION\\
+  Plaintiff moves for an order compelling production.\\
+  STATEMENT OF FACTS\\
+  Defendant served no response by April 3, 2026.\\
+  ARGUMENT\\
+  Defendant waived objections by failing to respond.\\
+  CONCLUSION\\
+  Plaintiff requests relief within fourteen days.\\
+  CERTIFICATE OF SERVICE\\
+  Service completed September 5, 2026.\\
+\end{singlespace}
+
+\end{document}

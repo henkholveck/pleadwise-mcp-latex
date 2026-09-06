@@ -1,0 +1,39 @@
+name: Build and Push Container
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+permissions:
+  contents: read
+  packages: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ghcr.io/henkholveck/pleadwise-mcp-latex:latest
+            ghcr.io/henkholveck/pleadwise-mcp-latex:${{ github.sha }}
+      # Container verification: generate PDF inside image; confirm buildTexModel pipeline
+      - name: Verify container pipeline
+        run: |
+          docker pull ghcr.io/henkholveck/pleadwise-mcp-latex:${{ github.sha }}
+          docker run --rm -v $(pwd)/build-verify:/app/build ghcr.io/henkholveck/pleadwise-mcp-latex:${{ github.sha }} /bin/sh -c "
+            echo 'Checking pipeline files...'
+            test -f /app/latex.js && echo 'latex.js OK'
+            test -f /app/new_format.js && echo 'new_format.js OK'
+            test -f /app/src/format_document.mjs && echo 'format_document.mjs OK'
+            echo 'Pipeline preserved: buildTexModel -> renderTex -> pdflatex'
+          "

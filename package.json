@@ -1,0 +1,31 @@
+{
+  "name": "@pleadwise/chatgpt-plugin",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "tsx watch src/http.ts",
+    "start": "node dist/src/http.js",
+    "start:stdio": "node dist/src/stdio.js",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --import tsx --test test/*.test.ts",
+    "submission:preflight": "npm run build && npm test && node scripts/submission-preflight.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "@supabase/supabase-js": "2.115.0",
+    "docx": "9.7.1",
+    "express": "5.2.1",
+    "jose": "6.2.12",
+    "pdf-lib": "1.17.1",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@types/express": "5.0.6",
+    "@types/node": "24.7.0",
+    "tsx": "4.23.13",
+    "typescript": "7.0.2"
+  }
+}
