@@ -30,5 +30,5 @@ jobs:
         run: |
           docker run --rm --name pleadwise-test -d -p 8080:8080 ghcr.io/henkholveck/pleadwise-mcp-latex:${{ github.sha }}
           sleep 15
-          curl -sf http://localhost:8080/ || (echo "Server start or health check failed"; exit 1)
-          echo "Server responds; pipeline preserved; real verification at deployed endpoint."
+          curl -sf http://localhost:8080/health | grep -q '"ok":true' || (echo "Health check failed"; docker logs pleadwise-test; exit 1)
+          echo "Server healthy; /health returns ok:true; real verification relies on deployed endpoint test"
