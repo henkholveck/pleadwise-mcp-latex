@@ -4,7 +4,7 @@ FROM node:22-slim
 RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-base texlive-latex-extra texlive-fonts-extra \
     texlive-pstricks texlive-science texlive-latex-base texlive-latex-recommended \
-    texlive-fonts-recommended texlive-pictures \
+    texlive-fonts-recommended texlive-pictures tex-gyre \
     texlive-extra-utils texlive-font-utils \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
