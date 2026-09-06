@@ -28,7 +28,13 @@ jobs:
             ghcr.io/henkholveck/pleadwise-mcp-latex:${{ github.sha }}
       - name: Verify container pipeline (strict)
         run: |
-          docker run --rm --name pleadwise-test -d -p 8080:8080 ghcr.io/henkholveck/pleadwise-mcp-latex:${{ github.sha }}
+          docker run --name pleadwise-test -d -p 8080:8080 ghcr.io/henkholveck/pleadwise-mcp-latex:${{ github.sha }}
           sleep 15
-          curl -sf http://localhost:8080/health | grep -q '"ok":true' || (echo "Health check failed"; docker logs pleadwise-test; exit 1)
-          echo "Server healthy; /health returns ok:true; real verification relies on deployed endpoint test"
+          if ! curl -sf http://localhost:8080/health | grep -q '"ok":true'; then
+            echo "Health check failed"
+            docker ps -a
+            docker logs pleadwise-test
+            docker inspect pleadwise-test --format '{{.State.ExitCode}} {{.State.Status}}' || true
+            exit 1
+          fi
+          echo "Server healthy; /health returns ok:true"

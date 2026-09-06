@@ -1,6 +1,6 @@
 import express from "express";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
-import { createMcpServer } from "./mcp.js";
+import { createMcpServer } from "/app/dist/src/mcp.js";
 import fs from "node:fs";
 import path from "node:path";
 
