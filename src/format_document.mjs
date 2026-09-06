@@ -21,7 +21,7 @@ export function formatDocument({ document_text, court_id, title }) {
   };
   const model = buildTexModel(blocks, record);
   const tex = renderTex(model);
-  const buildDir = path.join(process.env.HOME || "/app", "pleadwise-mcp-latex/build");
+  const buildDir = "/app/build";
   fs.mkdirSync(buildDir, { recursive: true });
   const texPath = path.join(buildDir, `${record.id}.tex`);
   const pdfPath = path.join(buildDir, `${record.id}.pdf`);
@@ -47,7 +47,7 @@ export function formatDocument({ document_text, court_id, title }) {
 
 function parseParser() {
   // Load the real parser from new_format.js (ESM export stripped in test harness, use same approach)
-  let code = fs.readFileSync(path.join(process.env.HOME || "/app", "pleadwise-mcp-patch/new_format.js"), "utf8");
+  let code = fs.readFileSync("/app/new_format.js", "utf8");
   code = code.replace(/^export /gm, "");
   const fn = new Function(code + "\nreturn { parseDocument };");
   return fn();
